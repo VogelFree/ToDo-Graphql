@@ -51,3 +51,35 @@ const createTodo = (args: { input: TodoInput }): Todo => {
     todos.push(todo)
     return todo
 }
+
+const updateTodo = (args: { todo: Todo}): Todo => {
+    const index = todos.findIndex(u => u.id === args.todo.id)
+    const targetTodo = todos[index]
+
+    if (targetTodo) todos[index] = args.todo
+
+    return targetTodo
+}
+
+const root = {
+    getTodo,
+    getTodos,
+    createTodo,
+    updateTodo,
+}
+
+const app = express()
+
+app.use(
+    "/graphql",
+    graphqlHTTP({
+        schema: schema,
+        rootValue: root,
+        graphiql: true,
+    })
+)
+
+const PORT = 8000
+
+app.listen(PORT)
+console.log(`Running a GraphQL API service at http://localhost:${PORT}/graphql`)
