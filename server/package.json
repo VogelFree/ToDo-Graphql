@@ -1,0 +1,11 @@
+{
+  "name": "graphql-todo-server",
+  "version": "1.0.0",
+  "description": "A graphql server for a todo list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vogel, Daniel",
+  "license": "ISC"
+}
